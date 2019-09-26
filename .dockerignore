@@ -1,0 +1,8 @@
+.git
+cd-BUILD.sh
+cd-PUBLICADOR-EXEMPLO.sh
+docker-compose.build.yml
+docker-compose.cd-release-all.yml
+Dockerfile
+README.md
+exemplos

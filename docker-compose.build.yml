@@ -1,0 +1,25 @@
+# docker-compose -f .\docker-compose.build.yml build
+version: '3.5'
+services:
+  dsa-publicador:
+    image: publicador:${VERSION}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        TimeZone: ${TIMEZONE}
+        Language: ${LANGUAGE}
+        Unicode: ${UNICODE}
+        KUBECTL_VERSION: ${KUBECTL_VERSION} #https://github.com/kubernetes/kubernetes/releases
+        KOMPOSE_VERSION: ${KOMPOSE_VERSION} #https://github.com/kubernetes/kompose/releases
+        NUGET_VERSION: ${NUGET_VERSION} #https://www.nuget.org/downloads
+        NODE_VERSION: ${NODE_VERSION} #https://nodejs.org/en/download/
+        #Setar configurações de registry como argumento caso deseja deixar a imagem com valores default, utilizando environment variable
+        DOCKER_REGISTRY: ${DOCKER_REGISTRY}
+        NPM_REGISTRY: ${NPM_REGISTRY}
+        NPM_USER: ${NPM_USER}
+        NPM_PASS: ${NPM_PASS}
+        NPM_EMAIL: ${NPM_EMAIL}
+        NUGET_REGISTRY: ${NUGET_REGISTRY}
+        NUGET_USER: ${NUGET_USER}
+        NUGET_PASS: ${NUGET_PASS}
