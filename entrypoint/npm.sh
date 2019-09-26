@@ -25,10 +25,10 @@ validarParametros(){
 npmPackWithLifeCicleIfExists() {
     mkdir -p ${NPM_PACKAGES_FOLDER}publish/
 
-    if [[ $NPM_LIFE_CICLE_VERSION != "" ]]; then
+    if [[ $NPM_LIFECYCLE_VERSION != "" ]]; then
         echo
         echo "-------------------------"
-        echo "LIFE_CICLE_VERSION: $NPM_LIFE_CICLE_VERSION"
+        echo "LIFECYCLE_VERSION: $NPM_LIFECYCLE_VERSION"
         echo
         for file in *.tgz; 
         do
@@ -41,7 +41,7 @@ npmPackWithLifeCicleIfExists() {
                         
             cd ${NPM_PACKAGES_FOLDER}temp/package
             currentVersion=$(node -p "require('./package.json').version")
-            newVersion=$currentVersion-$NPM_LIFE_CICLE_VERSION
+            newVersion=$currentVersion-$NPM_LIFECYCLE_VERSION
 
             echo
             echo

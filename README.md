@@ -43,7 +43,7 @@ services:
 
 ### Descrição das variaveis de ambiente
 - **DEPLOY_NUGET:** Indica se irá rodar o script que publica pacotes nuget
-- **NUGET_LIFE_CICLE_VERSION:** Life cycle do pacote Nuget
+- **NUGET_LIFECYCLE_VERSION:** Life cycle do pacote Nuget
 - **NUGET_REGISTRY:** Registry para publicação do pacote nuget
 - **NUGET_USER:** Usuário do registry
 - **NUGET_PASS:** Senha do registry
@@ -56,7 +56,7 @@ services:
     image: publicador:latest
     environment:
       DEPLOY_NUGET: ${DEPLOY_NUGET}
-      NUGET_LIFE_CICLE_VERSION: ${NUGET_LIFE_CICLE_VERSION}
+      NUGET_LIFECYCLE_VERSION: ${NUGET_LIFECYCLE_VERSION}
       NUGET_REGISTRY: ${NUGET_REGISTRY}
       NUGET_USER: ${NUGET_USER}
       NUGET_PASS: ${NUGET_PASS}
@@ -70,7 +70,7 @@ services:
 
 ### Descrição das variaveis de ambiente
 - **DEPLOY_NPM:** Indica se irá rodar o script que publica pacotes NPM
-- **NPM_LIFE_CICLE_VERSION:** Life cycle do pacote NPM
+- **NPM_LIFECYCLE_VERSION:** Life cycle do pacote NPM
 - **NPM_REGISTRY:** Registry para publicação do pacote NPM
 - **NPM_USER:** Usuário do registry
 - **NPM_PASS:** Senha Usuário do registry
@@ -84,7 +84,7 @@ services:
     image: publicador:latest
     environment:
       DEPLOY_NPM: ${DEPLOY_NPM}
-      NPM_LIFE_CICLE_VERSION: ${NPM_LIFE_CICLE_VERSION}
+      NPM_LIFECYCLE_VERSION: ${NPM_LIFECYCLE_VERSION}
       NPM_REGISTRY: ${NPM_REGISTRY}
       NPM_USER: ${NPM_USER}
       NPM_PASS: ${NPM_PASS}

@@ -27,10 +27,10 @@ sourcesAdd() {
 }
 
 packWithSuffixIfExists() {
-    if [[ ${NUGET_LIFE_CICLE_VERSION} != "" ]]; then
+    if [[ ${NUGET_LIFECYCLE_VERSION} != "" ]]; then
         echo
         echo "-------------------------"
-        echo "LIFE_CICLE_VERSION: $NUGET_LIFE_CICLE_VERSION"        
+        echo "LIFECYCLE_VERSION: $NUGET_LIFECYCLE_VERSION"        
         echo
         for file in *.nupkg; 
         do
@@ -40,7 +40,7 @@ packWithSuffixIfExists() {
             unzip -qq $file -d ./temp
             rm $file        
             nuspecFile="$(ls ./temp | grep **.nuspec)"        
-            $nuget pack "./temp/$nuspecFile" -suffix ${NUGET_LIFE_CICLE_VERSION} -verbosity normal -ForceEnglishOutput
+            $nuget pack "./temp/$nuspecFile" -suffix ${NUGET_LIFECYCLE_VERSION} -verbosity normal -ForceEnglishOutput
             rm -r ./temp            
         done;
         echo "-------------------------" 
