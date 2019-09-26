@@ -17,9 +17,10 @@ chechKubeconfigPath(){
   fi;
 
   if [[ ! -f ${KUBECONFIG_PATH} ]]; then
-      echo "kubeconfig nao encontrado. (${KUBECONFIG_PATH})"      
       echo "Lista de kubeconfig disponíveis:"
       ls /entrypoint/kubernetes/kubeconfig/
+      >&2 echo "kubeconfig nao encontrado. (${KUBECONFIG_PATH})"
+      exit 4
   fi
 }
 
