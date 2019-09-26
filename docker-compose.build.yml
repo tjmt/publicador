@@ -1,8 +1,8 @@
 # docker-compose -f .\docker-compose.build.yml build
 version: '3.5'
 services:
-  dsa-publicador:
-    image: publicador:${VERSION}
+  tjmt-publicador:
+    image: tjmt/publicador:${IMAGE_VERSION}
     build:
       context: .
       dockerfile: Dockerfile
