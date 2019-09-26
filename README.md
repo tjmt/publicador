@@ -25,7 +25,7 @@ docker-compose -f docker-compose.yml down -v
 version: '3.5'
 services:
   sistema-release:
-    image: publisher:latest
+    image: publicador:latest
     environment:      
       DEPLOY_KUBERNETES: ${DEPLOY_KUBERNETES}
       DESTROY_KUBERNETES_ENVIRONMENT: ${DESTROY_KUBERNETES_ENVIRONMENT}
@@ -55,7 +55,7 @@ services:
 version: '3.5'
 services:
   sistema-release:
-    image: publisher:latest
+    image: publicador:latest
     environment:
       DEPLOY_NUGET: ${DEPLOY_NUGET}
       NUGET_LIFE_CICLE_VERSION: ${NUGET_LIFE_CICLE_VERSION}
@@ -83,7 +83,7 @@ version: '3.5'
 
 services:
   sistema-release:
-    image: nexusdocker.tjmt.jus.br/dsa/publisher:latest
+    image: publicador:latest
     environment:
       DEPLOY_NPM: ${DEPLOY_NPM}
       NPM_LIFE_CICLE_VERSION: ${NPM_LIFE_CICLE_VERSION}
