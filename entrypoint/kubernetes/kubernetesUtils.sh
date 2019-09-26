@@ -25,19 +25,17 @@ chechKubeconfigPath(){
 }
 
 convertKompose(){
-  komposeFile="docker-compose.${KOMPOSE_ENVIRONMENT}.yml"
-
   echo
   echo
   echo "-------------------------"
   echo "Kompose convert"
   echo
 
-  if [[ -f $komposeFile ]]; then
-      echo "Arquivo yml para conversao:  $komposeFile"
-      /usr/local/bin/kompose convert -f $komposeFile      
+  if [[ -f $COMPOSE_PATH ]]; then
+      echo "Arquivo yml para conversao:  $COMPOSE_PATH"
+      /usr/local/bin/kompose convert -f $COMPOSE_PATH      
   else
-      >&2 echo "Arquivo $komposeFile não encontrado"
+      >&2 echo "Arquivo $COMPOSE_PATH não encontrado"
       exit 4    
   fi;
 

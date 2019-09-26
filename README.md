@@ -14,7 +14,7 @@ docker-compose -f docker-compose.yml down -v
 - **DESTROY_KUBERNETES_ENVIRONMENT:** Indica se irá rodar o script que deleta os yaml no Kubernetes (`kubectl delete`)
 - **KUBERNETES_FOLDER:** Caminho dos arquivos yaml para publicação (Default: `/var/release/source`)
 - **KUBECONFIG_PATH:** Caminho do kubeconfig para publicação (Default: `/var/release/source/kubeconfig`)
-- **KOMPOSE_ENVIRONMENT:** Caso deseja utilizar Kompose para converter yml em yaml, utilizar esta variavel para selecionar o arquivo a ser transformado: `komposeFile="docker-compose.${KOMPOSE_ENVIRONMENT}.yml`"
+- **COMPOSE_PATH:** Caso deseja utilizar Kompose para converter yml em yaml, informar o caminho completo do docker-compose a ser transformado.
 
 ### Obs:
 - Para publicar os yaml no kubernetes, usar `DEPLOY_KUBERNETES:true`
@@ -30,7 +30,7 @@ services:
       DESTROY_KUBERNETES_ENVIRONMENT: ${DESTROY_KUBERNETES_ENVIRONMENT}
       KUBERNETES_FOLDER: ${KUBERNETES_FOLDER}
       KUBECONFIG_PATH: ${KUBECONFIG_PATH}
-      KOMPOSE_ENVIRONMENT: ${KOMPOSE_ENVIRONMENT}
+      COMPOSE_PATH: ${COMPOSE_PATH}
     volumes:
       - ./exemplos/kubernetes:/var/release/source
 ```
