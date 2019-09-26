@@ -17,6 +17,7 @@ docker-compose -f docker-compose.yml down -v
 - **KUBERNETES_ENVIRONMENT:** Caso não seja informado o KUBECONFIG_PATH, o script irá usar esta variavel para buscar o kubeconfig pre definido: `/entrypoint/kubernetes/kubeconfig/${KUBERNETES_ENVIRONMENT}`"
 - **KOMPOSE_ENVIRONMENT:** Caso deseja utilizar Kompose para converter yml em yaml, utilizar esta variavel para selecionar o arquivo a ser transformado: `komposeFile="docker-compose.${KOMPOSE_ENVIRONMENT}.yml`"
 
+### Obs:
 - Para publicar os yaml no kubernetes, usar `DEPLOY_KUBERNETES:true`
 - Para excluir os yaml no kubernetes, usar `DESTROY_KUBERNETES_ENVIRONMENT:true`
 
@@ -70,12 +71,12 @@ services:
   <summary>NPM</summary>
 
 ### Descrição das variaveis de ambiente
-**DEPLOY_NPM:** Indica se irá rodar o script que publica pacotes NPM
-**NPM_LIFE_CICLE_VERSION:** Life cycle do pacote NPM
-**NPM_REGISTRY:** Registry para publicação do pacote NPM
-**NPM_USER:** Usuário do registry
-**NPM_PASS:** Senha Usuário do registry
-**NPM_EMAIL:** Email para login do registry
+- **DEPLOY_NPM:** Indica se irá rodar o script que publica pacotes NPM
+- **NPM_LIFE_CICLE_VERSION:** Life cycle do pacote NPM
+- **NPM_REGISTRY:** Registry para publicação do pacote NPM
+- **NPM_USER:** Usuário do registry
+- **NPM_PASS:** Senha Usuário do registry
+- **NPM_EMAIL:** Email para login do registry
 
 ```yml
 version: '3.5'
@@ -94,3 +95,10 @@ services:
       - ./exemplos/npm:/var/release/packages/npm
 ```
 </details>
+
+<details>
+  <summary>Maven</summary>
+
+#TODO
+
+</details>  
