@@ -1,12 +1,13 @@
-#https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install
 #https://github.com/NuGet/Home/issues/8433#issue-478154101
 FROM ubuntu:18.04 as base
 
-ARG TimeZone="America/Cuiaba"
-ARG Language="pt_BR"
-ARG Unicode="UTF-8"   
+#https://askubuntu.com/questions/91543/apt-get-update-fails-to-fetch-files-temporary-failure-resolving-error
+RUN echo "nameserver 8.8.8.8" | tee /etc/resolv.conf > /dev/null
 
-#Precisa configurar o timezone por causa que o mono pede a localidade
+ARG TimeZone
+ARG Language
+ARG Unicode
+
 RUN ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /etc/timezone
 
 RUN apt-get update && \
@@ -14,16 +15,17 @@ RUN apt-get update && \
     apt-get -y install zip && \
     apt-get -y install unzip && \
     apt-get -y install curl && \
-    apt-get -y install mono-complete && \
     apt-get -y install apt-transport-https && \
     locale-gen ${Language}.${Unicode} && \ 
     update-locale LANG=${Language}.${Unicode}
 
 ENV LANG ${Language}.${Unicode}
 ENV LANGUAGE ${Language}
+
+RUN apt-get -y install mono-complete
 #------------------------------------------#
 
-ARG NUGET_VERSION=
+ARG NUGET_VERSION
 ARG KUBECTL_VERSION
 ARG KOMPOSE_VERSION
 ARG NODE_VERSION
@@ -79,23 +81,6 @@ RUN mv ./kompose /usr/local/bin/kompose
 #------------------------------------------#
 
 FROM base as publicador
-ARG DOCKER_REGISTRY
-ARG NPM_USER
-ARG NPM_PASS
-ARG NPM_EMAIL
-ARG NPM_REGISTRY
-ARG NUGET_REGISTRY
-ARG NUGET_USER
-ARG NUGET_PASS
-
-ENV DOCKER_REGISTRY=${DOCKER_REGISTRY}
-ENV NPM_USER=${NPM_USER}
-ENV NPM_PASS=${NPM_PASS}
-ENV NPM_EMAIL=${NPM_EMAIL}
-ENV NPM_REGISTRY=${NPM_REGISTRY}
-ENV NUGET_REGISTRY=${NUGET_REGISTRY}
-ENV NUGET_USER=${NUGET_USER}
-ENV NUGET_PASS=${NUGET_PASS}
 
 WORKDIR /entrypoint
 COPY ./entrypoint /entrypoint
