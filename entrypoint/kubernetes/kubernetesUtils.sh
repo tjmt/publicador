@@ -25,21 +25,24 @@ chechKubeconfigPath(){
 }
 
 convertKompose(){
-  echo
-  echo
-  echo "-------------------------"
-  echo "Kompose convert"
-  echo
+  #Se foi informado usar kompose
+  if [[ ${COMPOSE_PATH} != "" ]]; then
+    echo
+    echo
+    echo "-------------------------"
+    echo "Kompose convert"
+    echo
 
-  if [[ -f $COMPOSE_PATH ]]; then
-      echo "Arquivo yml para conversao:  $COMPOSE_PATH"
-      /usr/local/bin/kompose convert -f $COMPOSE_PATH      
-  else
-      >&2 echo "Arquivo $COMPOSE_PATH não encontrado"
-      exit 4    
-  fi;
+    if [[ -f $COMPOSE_PATH ]]; then
+        echo "Arquivo yml para conversao:  $COMPOSE_PATH"
+        /usr/local/bin/kompose convert -f $COMPOSE_PATH      
+    else
+        >&2 echo "Arquivo $COMPOSE_PATH não encontrado"
+        exit 4    
+    fi;
 
-  echo "-------------------------"
+    echo "-------------------------"
+  fi;  
 }
 
 kubectlApply(){

@@ -10,4 +10,5 @@ export NODE_VERSION="10.16.3"
 
 
 export IMAGE_VERSION="latest"
-docker-compose -f docker-compose.build.yml build && docker-compose -f docker-compose.build.yml push
+docker-compose -f docker-compose.build.yml build 
+docker-compose -f docker-compose.build.yml push
