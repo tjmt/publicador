@@ -69,6 +69,7 @@ RUN curl -o /usr/local/bin/nuget.exe ${NUGET_URL}
 
 #------------------------------------------#
 #------------------kompose-----------------# 
+#https://github.com/kubernetes/kompose/releases/
 #Customizado TJMT
 COPY kompose ./kompose
 #Comunidade
