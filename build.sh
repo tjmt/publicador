@@ -10,6 +10,6 @@ export NODE_VERSION="10.17.0"
 
 
 export IMAGE_VERSION="latest"
-docker-compose -f docker-compose.build.yml build 
+docker-compose -f docker-compose.build.yml build && \
 #docker-compose -f docker-compose.build.yml push
 docker push tjmt/publicador:${IMAGE_VERSION}

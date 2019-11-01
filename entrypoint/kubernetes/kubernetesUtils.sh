@@ -46,7 +46,6 @@ convertKompose(){
 }
 
 kubectlApply(){
-
   echo
   echo "-------------------------"
   echo "kubectl apply"
@@ -55,13 +54,13 @@ kubectlApply(){
   for file in *-namespace.yaml;
   do
     [[ -f $file ]] || continue
-    kubectl --kubeconfig ${KUBECONFIG_PATH} apply -f $file
+    kubectl convert -f $file | kubectl --kubeconfig ${KUBECONFIG_PATH} apply -f-
   done;
 
   for file in *.yaml;
   do
     [[ -f $file ]] || continue
-    kubectl --kubeconfig ${KUBECONFIG_PATH} apply -f $file
+    kubectl convert -f $file | kubectl --kubeconfig ${KUBECONFIG_PATH} apply -f-
   done;  
   echo "-------------------------"
 }
