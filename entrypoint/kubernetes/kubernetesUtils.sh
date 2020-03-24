@@ -75,7 +75,7 @@ kubectlDelete(){
   for file in *-namespace.yaml;
   do
     [[ -f $file ]] || continue
-    kubectl --kubeconfig ${KUBECONFIG_PATH} delete -f $file --grace-period=0 --force
+    kubectl --kubeconfig ${KUBECONFIG_PATH} delete -f $file --grace-period=0 --force --wait=false
     exit 0;
   done;  
   echo "-------------------------"
