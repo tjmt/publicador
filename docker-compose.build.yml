@@ -1,5 +1,4 @@
-# docker-compose -f .\docker-compose.build.yml build
-version: '3.5'
+version: '3.7'
 services:
   tjmt-publicador:
     image: tjmt/publicador:${IMAGE_VERSION}

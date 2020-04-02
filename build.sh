@@ -8,8 +8,8 @@ export KOMPOSE_VERSION="v1.19.0"
 export NUGET_VERSION="latest"
 export NODE_VERSION="10.17.0"
 
-
-export IMAGE_VERSION="latest"
-docker-compose -f docker-compose.build.yml build && \
-#docker-compose -f docker-compose.build.yml push
-docker push tjmt/publicador:${IMAGE_VERSION}
+export IMAGE_VERSION="1.0"
+docker-compose -f docker-compose.build.yml build
+docker tag tjmt/publicador:$IMAGE_VERSION tjmt/publicador:$(echo $IMAGE_VERSION | sed 's/.\{2\}$//')
+docker tag tjmt/publicador:$IMAGE_VERSION tjmt/publicador:latest
+docker push tjmt/publicador
