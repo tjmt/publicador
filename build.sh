@@ -13,3 +13,4 @@ docker-compose -f docker-compose.build.yml build
 docker tag tjmt/publicador:$IMAGE_VERSION tjmt/publicador:$(echo $IMAGE_VERSION | sed 's/.\{2\}$//')
 docker tag tjmt/publicador:$IMAGE_VERSION tjmt/publicador:latest
 docker push tjmt/publicador
+docker-compose -f docker-compose.build.yml down -v --rmi all --remove-orphans
