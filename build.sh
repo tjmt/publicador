@@ -5,7 +5,7 @@ export LANGUAGE="pt_BR"
 export UNICODE="UTF-8"
 export KUBECTL_VERSION="v1.17.0"
 export KOMPOSE_VERSION="v1.19.0"
-export NUGET_VERSION="latest"
+export NUGET_VERSION="v5.2.0"
 export NODE_VERSION="10.17.0"
 
 export IMAGE_VERSION="1.0"
