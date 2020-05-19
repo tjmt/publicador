@@ -15,6 +15,11 @@ validarParametros(){
         >&2 echo "NUGET_PASS is not set!"
         exit 4
     fi
+
+    if [[ $NUGET_APIKEY == "" ]]; then
+        >&2 echo "NUGET_APIKEY is not set!"
+        exit 4
+    fi
 }
 
 #https://docs.microsoft.com/en-us/nuget/reference/cli-reference/cli-ref-pack
@@ -23,6 +28,14 @@ sourcesAdd() {
     echo "-------------------------"
     echo "Nuget sources add"    
     $nuget sources add -Name "nuget-publish" -Source ${NUGET_REGISTRY} -username ${NUGET_USER} -password ${NUGET_PASS} -verbosity normal -ForceEnglishOutput    
+    echo "-------------------------"
+}
+
+setApiKey() {
+    echo
+    echo "-------------------------"
+    echo "Nuget setapikey"    
+    $nuget setapikey ${NUGET_APIKEY} -Source ${NUGET_REGISTRY} -verbosity normal -ForceEnglishOutput    
     echo "-------------------------"
 }
 
@@ -76,5 +89,6 @@ printPacotesParaPublicacao
 validarParametros
 nuget="/usr/bin/mono /usr/local/bin/nuget.exe"
 sourcesAdd
+setApiKey
 packWithSuffixIfExists
 nugetPush
